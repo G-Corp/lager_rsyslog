@@ -36,7 +36,7 @@ dest_addr(Config) ->
                 {ok, Address} ->
                     Address;
                 _ ->
-                   {127, 0, 0, 1} 
+                   {127, 0, 0, 1}
             end;
         false ->
             {127, 0, 0, 1}
@@ -54,7 +54,7 @@ dest_port(Config) ->
 
 identity(Config) ->
     case lists:keyfind(identity, 1, Config) of
-        {identity, Ident} when is_atom(Ident) orelse is_list(Ident) ->
+        {identity, Ident} when is_atom(Ident) orelse is_list(Ident) orelse is_binary(Ident) ->
             Ident;
         false ->
             hd(string:tokens(atom_to_list(node()), "@"))
